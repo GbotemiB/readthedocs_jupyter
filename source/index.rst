@@ -11,8 +11,9 @@ Welcome to test's documentation!
    :caption: Contents:
 
    tutorial_nb.ipynb
-
-
+   contributing
+   release
+   
 
 Indices and tables
 ==================

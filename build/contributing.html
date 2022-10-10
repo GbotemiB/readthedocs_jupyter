@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Contributing to Zarr &#8212; test v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Filters" href="tutorial_nb.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="contributing-to-zarr">
+<h1>Contributing to Zarr<a class="headerlink" href="#contributing-to-zarr" title="Permalink to this headline">¶</a></h1>
+<p>Zarr is a community maintained project. We welcome contributions in the form of bug
+reports, bug fixes, documentation, enhancement proposals and more. This page provides
+information on how best to contribute.</p>
+<section id="asking-for-help">
+<h2>Asking for help<a class="headerlink" href="#asking-for-help" title="Permalink to this headline">¶</a></h2>
+<p>If you have a question about how to use Zarr, please post your question on
+StackOverflow using the <a class="reference external" href="https://stackoverflow.com/questions/tagged/zarr">“zarr” tag</a>.
+If you don’t get a response within a day or two, feel free to raise a <a class="reference external" href="https://github.com/zarr-developers/zarr-python/issues/new">GitHub issue</a> including a link to your StackOverflow
+question. We will try to respond to questions as quickly as possible, but please bear
+in mind that there may be periods where we have limited time to answer questions
+due to other commitments.</p>
+</section>
+<section id="bug-reports">
+<h2>Bug reports<a class="headerlink" href="#bug-reports" title="Permalink to this headline">¶</a></h2>
+<p>If you find a bug, please raise a <a class="reference external" href="https://github.com/zarr-developers/zarr-python/issues/new">GitHub issue</a>. Please include the following items in
+a bug report:</p>
+<ol class="arabic">
+<li><p>A minimal, self-contained snippet of Python code reproducing the problem. You can
+format the code nicely using markdown, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```python
+import zarr
+g = zarr.group()
+# etc.
+```
+</pre></div>
+</div>
+</li>
+<li><p>An explanation of why the current behaviour is wrong/not desired, and what you
+expect instead.</p></li>
+<li><p>Information about the version of Zarr, along with versions of dependencies and the
+Python interpreter, and installation information. The version of Zarr can be obtained
+from the <code class="docutils literal notranslate"><span class="pre">zarr.__version__</span></code> property. Please also state how Zarr was installed,
+e.g., “installed via pip into a virtual environment”, or “installed using conda”.
+Information about other packages installed can be obtained by executing <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code>
+(if using pip to install packages) or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">export</span></code> (if using conda to install
+packages) from the operating system command prompt. The version of the Python
+interpreter can be obtained by running a Python interactive session, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python
+Python 3.6.1 (default, Mar 22 2017, 06:17:05)
+[GCC 6.3.0 20170321] on linux
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="enhancement-proposals">
+<h2>Enhancement proposals<a class="headerlink" href="#enhancement-proposals" title="Permalink to this headline">¶</a></h2>
+<p>If you have an idea about a new feature or some other improvement to Zarr, please raise a
+<a class="reference external" href="https://github.com/zarr-developers/zarr-python/issues/new">GitHub issue</a> first to discuss.</p>
+<p>We very much welcome ideas and suggestions for how to improve Zarr, but please bear in
+mind that we are likely to be conservative in accepting proposals for new features. The
+reasons for this are that we would like to keep the Zarr code base lean and focused on
+a core set of functionalities, and available time for development, review and maintenance
+of new features is limited. But if you have a great idea, please don’t let that stop
+you from posting it on GitHub, just please don’t be offended if we respond cautiously.</p>
+</section>
+<section id="contributing-code-and-or-documentation">
+<h2>Contributing code and/or documentation<a class="headerlink" href="#contributing-code-and-or-documentation" title="Permalink to this headline">¶</a></h2>
+<section id="forking-the-repository">
+<h3>Forking the repository<a class="headerlink" href="#forking-the-repository" title="Permalink to this headline">¶</a></h3>
+<p>The Zarr source code is hosted on GitHub at the following location:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/zarr-developers/zarr-python">https://github.com/zarr-developers/zarr-python</a></p></li>
+</ul>
+<p>You will need your own fork to work on the code. Go to the link above and hit
+the “Fork” button. Then clone your fork to your local machine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone git@github.com:your-user-name/zarr.git
+$ cd zarr
+$ git remote add upstream git@github.com:zarr-developers/zarr-python.git
+</pre></div>
+</div>
+</section>
+<section id="creating-a-development-environment">
+<h3>Creating a development environment<a class="headerlink" href="#creating-a-development-environment" title="Permalink to this headline">¶</a></h3>
+<p>To work with the Zarr source code, it is recommended to set up a Python virtual
+environment and install all Zarr dependencies using the same versions as are used by
+the core developers and continuous integration services. Assuming you have a Python
+3 interpreter already installed, and have also installed the virtualenv package, and
+you have cloned the Zarr source code and your current working directory is the root of
+the repository, you can do something like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p ~/pyenv/zarr-dev
+$ python -m venv ~/pyenv/zarr-dev
+$ source ~/pyenv/zarr-dev/bin/activate
+$ pip install -r requirements_dev_minimal.txt -r requirements_dev_numpy.txt
+$ pip install -e .
+</pre></div>
+</div>
+<p>To verify that your development environment is working, you can run the unit tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pytest -v zarr
+</pre></div>
+</div>
+</section>
+<section id="creating-a-branch">
+<h3>Creating a branch<a class="headerlink" href="#creating-a-branch" title="Permalink to this headline">¶</a></h3>
+<p>Before you do any new work or submit a pull request, please open an issue on GitHub to
+report the bug or propose the feature you’d like to add.</p>
+<p>It’s best to synchronize your fork with the upstream repository, then create a
+new, separate branch for each piece of work you want to do. E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+<span class="n">git</span> <span class="n">push</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">shiny</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">feature</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">shiny</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">feature</span>
+</pre></div>
+</div>
+<p>This changes your working directory to the ‘shiny-new-feature’ branch. Keep any changes in
+this branch specific to one bug or feature so it is clear what the branch brings to
+Zarr.</p>
+<p>To update this branch with latest code from Zarr, you can retrieve the changes from
+the main branch and perform a rebase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>This will replay your commits on top of the latest Zarr git main. If this leads to
+merge conflicts, these need to be resolved before submitting a pull request.
+Alternatively, you can merge the changes in from upstream/main instead of rebasing,
+which can be simpler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>Again, any conflicts need to be resolved before submitting a pull request.</p>
+</section>
+<section id="running-the-test-suite">
+<h3>Running the test suite<a class="headerlink" href="#running-the-test-suite" title="Permalink to this headline">¶</a></h3>
+<p>Zarr includes a suite of unit tests, as well as doctests included in
+function and class docstrings and in the tutorial and storage
+spec. The simplest way to run the unit tests is to activate your
+development environment (see <a class="reference internal" href="#creating-a-development-environment">creating a development environment</a> above)
+and invoke:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pytest -v zarr
+</pre></div>
+</div>
+<p>Some tests require optional dependencies to be installed, otherwise
+the tests will be skipped. To install all optional dependencies, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -r requirements_dev_optional.txt
+</pre></div>
+</div>
+<p>To also run the doctests within docstrings (requires optional
+dependencies to be installed), run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pytest -v --doctest-plus zarr
+</pre></div>
+</div>
+<p>To run the doctests within the tutorial and storage spec (requires
+optional dependencies to be installed), run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m doctest -o NORMALIZE_WHITESPACE -o ELLIPSIS docs/tutorial.rst docs/spec/v2.rst
+</pre></div>
+</div>
+<p>Note that some tests also require storage services to be running
+locally. To run the Azure Blob Service storage tests, run an Azure
+storage emulator (e.g., azurite) and set the environment variable
+<code class="docutils literal notranslate"><span class="pre">ZARR_TEST_ABS=1</span></code>. If you’re using Docker to run azurite, start the service with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">p</span> <span class="mi">10000</span><span class="p">:</span><span class="mi">10000</span> <span class="n">mcr</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">azure</span><span class="o">-</span><span class="n">storage</span><span class="o">/</span><span class="n">azurite</span> <span class="n">azurite</span><span class="o">-</span><span class="n">blob</span> <span class="o">--</span><span class="n">loose</span> <span class="o">--</span><span class="n">blobHost</span> <span class="mf">0.0.0.0</span>
+</pre></div>
+</div>
+<p>To run the Mongo DB storage tests, run a Mongo
+server locally and set the environment variable <code class="docutils literal notranslate"><span class="pre">ZARR_TEST_MONGO=1</span></code>.
+To run the Redis storage tests, run a Redis server locally on port
+6379 and set the environment variable <code class="docutils literal notranslate"><span class="pre">ZARR_TEST_REDIS=1</span></code>.</p>
+<p>All tests are automatically run via GitHub Actions for every pull
+request and must pass before code can be accepted. Test coverage is
+also collected automatically via the Codecov service, and total
+coverage over all builds must be 100% (although individual builds
+may be lower due to Python 2/3 or other differences).</p>
+</section>
+<section id="code-standards">
+<h3>Code standards<a class="headerlink" href="#code-standards" title="Permalink to this headline">¶</a></h3>
+<p>All code must conform to the PEP8 standard. Regarding line length, lines up to 100
+characters are allowed, although please try to keep under 90 wherever possible.
+Conformance can be checked by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m flake8 --max-line-length=100 zarr
+</pre></div>
+</div>
+</section>
+<section id="test-coverage">
+<h3>Test coverage<a class="headerlink" href="#test-coverage" title="Permalink to this headline">¶</a></h3>
+<p>Zarr maintains 100% test coverage under the latest Python stable release (currently
+Python 3.8). Both unit tests and docstring doctests are included when computing
+coverage. Running <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">py38</span></code> will automatically run the test suite with coverage
+and produce a coverage report. This should be 100% before code can be accepted into the
+main code base.</p>
+<p>When submitting a pull request, coverage will also be collected across all supported
+Python versions via the Codecov service, and will be reported back within the pull
+request. Codecov coverage must also be 100% before code can be accepted.</p>
+</section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<p>Docstrings for user-facing classes and functions should follow the
+<a class="reference external" href="https://numpydoc.readthedocs.io/en/stable/format.html#docstring-standard">numpydoc</a>
+standard, including sections for Parameters and Examples. All examples
+should run and pass as doctests under Python 3.8. To run doctests,
+activate your development environment, install optional requirements,
+and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pytest -v --doctest-plus zarr
+</pre></div>
+</div>
+<p>Zarr uses Sphinx for documentation, hosted on readthedocs.org. Documentation is
+written in the RestructuredText markup language (.rst files) in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder.
+The documentation consists both of prose and API documentation. All user-facing classes
+and functions should be included in the API documentation, under the <code class="docutils literal notranslate"><span class="pre">docs/api</span></code>
+folder. Any new features or important usage information should be included in the
+tutorial (<code class="docutils literal notranslate"><span class="pre">docs/tutorial.rst</span></code>). Any changes should also be included in the release
+notes (<code class="docutils literal notranslate"><span class="pre">docs/release.rst</span></code>).</p>
+<p>The documentation can be built locally by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tox -e docs
+</pre></div>
+</div>
+<p>The resulting built documentation will be available in the <code class="docutils literal notranslate"><span class="pre">.tox/docs/tmp/html</span></code> folder.</p>
+</section>
+</section>
+<section id="development-best-practices-policies-and-procedures">
+<h2>Development best practices, policies and procedures<a class="headerlink" href="#development-best-practices-policies-and-procedures" title="Permalink to this headline">¶</a></h2>
+<p>The following information is mainly for core developers, but may also be of interest to
+contributors.</p>
+<section id="merging-pull-requests">
+<h3>Merging pull requests<a class="headerlink" href="#merging-pull-requests" title="Permalink to this headline">¶</a></h3>
+<p>Pull requests submitted by an external contributor should be reviewed and approved by at least
+one core developers before being merged. Ideally, pull requests submitted by a core developer
+should be reviewed and approved by at least one other core developers before being merged.</p>
+<p>Pull requests should not be merged until all CI checks have passed (GitHub Actions
+Codecov) against code that has had the latest main merged in.</p>
+</section>
+<section id="compatibility-and-versioning-policies">
+<h3>Compatibility and versioning policies<a class="headerlink" href="#compatibility-and-versioning-policies" title="Permalink to this headline">¶</a></h3>
+<p>Because Zarr is a data storage library, there are two types of compatibility to
+consider: API compatibility and data format compatibility.</p>
+<section id="api-compatibility">
+<h4>API compatibility<a class="headerlink" href="#api-compatibility" title="Permalink to this headline">¶</a></h4>
+<p>All functions, classes and methods that are included in the API
+documentation (files under <code class="docutils literal notranslate"><span class="pre">docs/api/*.rst</span></code>) are considered as part of the Zarr <strong>public API</strong>,
+except if they have been documented as an experimental feature, in which case they are part of
+the <strong>experimental API</strong>.</p>
+<p>Any change to the public API that does <strong>not</strong> break existing third party
+code importing Zarr, or cause third party code to behave in a different way, is a
+<strong>backwards-compatible API change</strong>. For example, adding a new function, class or method is usually
+a backwards-compatible change. However, removing a function, class or method; removing an argument
+to a function or method; adding a required argument to a function or method; or changing the
+behaviour of a function or method, are examples of <strong>backwards-incompatible API changes</strong>.</p>
+<p>If a release contains no changes to the public API (e.g., contains only bug fixes or
+other maintenance work), then the micro version number should be incremented (e.g.,
+2.2.0 -&gt; 2.2.1). If a release contains public API changes, but all changes are
+backwards-compatible, then the minor version number should be incremented
+(e.g., 2.2.1 -&gt; 2.3.0). If a release contains any backwards-incompatible public API changes,
+the major version number should be incremented (e.g., 2.3.0 -&gt; 3.0.0).</p>
+<p>Backwards-incompatible changes to the experimental API can be included in a minor release,
+although this should be minimised if possible. I.e., it would be preferable to save up
+backwards-incompatible changes to the experimental API to be included in a major release, and to
+stabilise those features at the same time (i.e., move from experimental to public API), rather than
+frequently tinkering with the experimental API in minor releases.</p>
+</section>
+<section id="data-format-compatibility">
+<h4>Data format compatibility<a class="headerlink" href="#data-format-compatibility" title="Permalink to this headline">¶</a></h4>
+<p>The data format used by Zarr is defined by a specification document, which should be
+platform-independent and contain sufficient detail to construct an interoperable
+software library to read and/or write Zarr data using any programming language. The
+latest version of the specification document is available from the <span class="xref std std-ref">spec</span> page.</p>
+<p>Here, <strong>data format compatibility</strong> means that all software libraries that implement a
+particular version of the Zarr storage specification are interoperable, in the sense
+that data written by any one library can be read by all others. It is obviously
+desirable to maintain data format compatibility wherever possible. However, if a change
+is needed to the storage specification, and that change would break data format
+compatibility in any way, then the storage specification version number should be
+incremented (e.g., 2 -&gt; 3).</p>
+<p>The versioning of the Zarr software library is related to the versioning of the storage
+specification as follows. A particular version of the Zarr library will
+implement a particular version of the storage specification. For example, Zarr version
+2.2.0 implements the Zarr storage specification version 2. If a release of the Zarr
+library implements a different version of the storage specification, then the major
+version number of the Zarr library should be incremented. E.g., if Zarr version 2.2.0
+implements the storage spec version 2, and the next release of the Zarr library
+implements storage spec version 3, then the next library release should have version
+number 3.0.0. Note however that the major version number of the Zarr library may not
+always correspond to the spec version number. For example, Zarr versions 2.x, 3.x, and
+4.x might all implement the same version of the storage spec and thus maintain data
+format compatibility, although they will not maintain API compatibility. The version number
+of the storage specification that is currently implemented is stored under the
+<code class="docutils literal notranslate"><span class="pre">zarr.meta.ZARR_FORMAT</span></code> variable.</p>
+<p>Note that the Zarr test suite includes a data fixture and tests to try and ensure that
+data format compatibility is not accidentally broken. See the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">test_format_compatibility()</span></code> function in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">zarr.tests.test_storage</span></code> module
+for details.</p>
+</section>
+</section>
+<section id="when-to-make-a-release">
+<h3>When to make a release<a class="headerlink" href="#when-to-make-a-release" title="Permalink to this headline">¶</a></h3>
+<p>Ideally, any bug fixes that don’t change the public API should be released as soon as
+possible. It is fine for a micro release to contain only a single bug fix.</p>
+<p>When to make a minor release is at the discretion of the core developers. There are no
+hard-and-fast rules, e.g., it is fine to make a minor release to make a single new
+feature available; equally, it is fine to make a minor release that includes a number of
+changes.</p>
+<p>Major releases obviously need to be given careful consideration, and should be done as
+infrequently as possible, as they will break existing code and/or affect data
+compatibility in some way.</p>
+</section>
+<section id="release-procedure">
+<h3>Release procedure<a class="headerlink" href="#release-procedure" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most of the release process is now handled by github workflow which should
+automatically push a release to PyPI if a tag is pushed.</p>
+</div>
+<p>Before releasing, make sure that all pull requests which will be
+included in the release have been properly documented in
+<cite>docs/release.rst</cite>.</p>
+<p>To make a new release, go to
+<a class="reference external" href="https://github.com/zarr-developers/zarr-python/releases">https://github.com/zarr-developers/zarr-python/releases</a> and
+click “Draft a new release”. Choose a version number prefixed
+with a <cite>v</cite> (e.g. <cite>v0.0.0</cite>). For pre-releases, include the
+appropriate suffix (e.g. <cite>v0.0.0a1</cite> or <cite>v0.0.0rc2</cite>).</p>
+<p>Set the description of the release to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">See</span> <span class="n">release</span> <span class="n">notes</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">zarr</span><span class="o">.</span><span class="n">readthedocs</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">release</span><span class="o">.</span><span class="n">html</span><span class="c1">#release-0-0-0</span>
+</pre></div>
+</div>
+<p>replacing the correct version numbers. For pre-release versions,
+the URL should omit the pre-release suffix, e.g. “a1” or “rc1”.</p>
+<p>After creating the release, the documentation will be built on
+<a class="reference external" href="https://readthedocs.io">https://readthedocs.io</a>. Full releases will be available under
+<a class="reference external" href="https://zarr.readthedocs.io/en/stable">/stable</a> while
+pre-releases will be available under
+<a class="reference external" href="https://zarr.readthedocs.io/en/latest">/latest</a>.</p>
+<p>Also review and merge the <a class="reference external" href="https://github.com/conda-forge/zarr-feedstock">https://github.com/conda-forge/zarr-feedstock</a>
+pull request that will be automatically generated.</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">test</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_nb.html">Filters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Zarr</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#asking-for-help">Asking for help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enhancement-proposals">Enhancement proposals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-code-and-or-documentation">Contributing code and/or documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-best-practices-policies-and-procedures">Development best practices, policies and procedures</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tutorial_nb.html" title="previous chapter">Filters</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Gbotemi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/contributing.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
